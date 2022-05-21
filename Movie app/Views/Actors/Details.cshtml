@@ -1,0 +1,50 @@
+﻿@model Actor
+@{
+    ViewData["Title"] = "Add new a Actor";
+}
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Actor Details</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <div class="form-group text-center">
+                    <img id="profileplaceholder" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProfilePictureUrl" class="control-label"></label>
+                    <input asp-for="ProfilePictureUrl" class="form-control" readonly/>
+                    <span asp-validation-for="ProfilePictureUrl" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="FullName" class="control-label"></label>
+                    <input asp-for="FullName" class="form-control" readonly/>
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Bio" class="control-label"></label>
+                    <input asp-for="Bio" class="form-control" readonly/>
+                    <span asp-validation-for="Bio" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <a class="btn btn-outline-success float-right" asp-action="Edit" asp-route-id="@Model.Id" >Edit</a>
+                    <a class="btn btn-outline-primary" asp-action="Index"> Show All</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            var output = document.getElementById("profileplaceholder");
+            output.src = $("#ProfilePictureUrl").val();
+        });
+    </script>
+}

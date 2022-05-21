@@ -1,0 +1,57 @@
+﻿@model Actor
+@{ 
+    ViewData["Title"] = "Update Actor";
+}
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Update Actor</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group text-center">
+                        <img id="profileplaceholder" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ProfilePictureUrl" class="control-label"></label>
+                        <input asp-for="ProfilePictureUrl" class="form-control" />
+                        <span asp-validation-for="ProfilePictureUrl" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="FullName" class="control-label"></label>
+                        <input asp-for="FullName" class="form-control" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Bio" class="control-label"></label>
+                        <input asp-for="Bio" class="form-control" />
+                        <span asp-validation-for="Bio" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Edit" class="btn btn-outline-success float-right" />
+                        <a class="btn btn-outline-primary" asp-action="Index"> Show All</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{ 
+    <script>
+        $(document).ready(function () {
+            var output = document.getElementById("profileplaceholder");
+            output.src = $("#ProfilePictureUrl").val();
+        });
+        $("#ProfilePictureUrl").on("change", function () {
+            var output = document.getElementById("profileplaceholder");
+            output.src = $(this).val();
+        });
+    </script>
+}
